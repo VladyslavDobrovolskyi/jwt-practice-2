@@ -8,7 +8,7 @@ const uuid = require('uuid')
 
 class UserService {
   async registation(email, password) {
-    const candidate = UserModel.findOne({ email })
+    const candidate = await UserModel.findOne({ email })
 
     if (candidate) {
       throw new Error(`Пользователь с почтовым адресом ${email} уже существует`)
