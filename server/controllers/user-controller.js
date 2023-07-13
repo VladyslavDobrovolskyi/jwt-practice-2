@@ -13,7 +13,7 @@ class UserController {
     } catch (error) {
       console.log(
         '🚀 ~ file: user-controller.js:14 ~ UserController ~ userRegistration ~ error:',
-        error
+        error.message
       )
     }
   }
