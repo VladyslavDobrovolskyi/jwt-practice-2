@@ -11,13 +11,6 @@ const UserSchema = new Schema({
     unique: true,
     required: true,
   },
-  isActivated: {
-    type: Boolean,
-    default: false,
-  },
-  activationLink: {
-    type: String,
-  },
 })
 
 module.exports = model('User', UserSchema)
