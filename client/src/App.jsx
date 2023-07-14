@@ -1,7 +1,12 @@
+import React from 'react'
+import LoginForm from './components/LoginForm'
 function App() {
 
   return (
-   <div>Client</div>
+   <div>
+    <h1>Login form</h1>
+    <LoginForm/>
+   </div>
   )
 }
 
