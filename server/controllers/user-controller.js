@@ -16,23 +16,33 @@ class UserController {
   }
   async userLogin(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
   async userLogout(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
   async activateLink(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
   async getRefreshToken(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
   async getUsers(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
 }
 
