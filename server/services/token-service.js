@@ -15,6 +15,23 @@ class TokenService {
     }
   }
 
+  validateAccessToken(token) {
+    try {
+      const userData = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+      return userData
+    } catch (error) {
+      return null
+    }
+  }
+  validateRefreshToken(token) {
+    try {
+      const userData = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET)
+      return userData
+    } catch (error) {
+      return null
+    }
+  }
+
   async saveToken(userId, refreshToken) {
     const tokenData = await TokenModel.findOne({ user: userId })
 
@@ -26,6 +43,10 @@ class TokenService {
     const token = await TokenModel.create({ user: userId, refreshToken })
 
     return token
+  }
+  async findToken(refreshToken) {
+    const tokenData = await TokenModel.findOne({ refreshToken })
+    return tokenData
   }
   async removeToken(refreshToken) {
     const tokenData = await TokenModel.deleteOne({ refreshToken })

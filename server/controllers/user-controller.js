@@ -1,6 +1,7 @@
 const UserService = require('../services/user-service')
 const { validationResult } = require('express-validator')
 const ApiError = require('../exceptions/api-error')
+const tokenService = require('../services/token-service')
 class UserController {
   async userRegistration(req, res, next) {
     try {
@@ -43,14 +44,15 @@ class UserController {
       next(error)
     }
   }
-  async activateLink(req, res, next) {
-    try {
-    } catch (error) {
-      next(error)
-    }
-  }
   async getRefreshToken(req, res, next) {
     try {
+      const { refreshToken } = req.cookies
+      const userData = await UserService.refresh(refreshToken)
+      res.cookie('refreshToken', userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      })
+      return res.json(userData)
     } catch (error) {
       next(error)
     }
