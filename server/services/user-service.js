@@ -1,7 +1,7 @@
 require('dotenv').config()
 const UserModel = require('../models/user-model')
 const UserDto = require('../dtos/user-dto')
-
+const ApiError = require('../exceptions/api-error')
 const tokenService = require('./token-service')
 const bcrypt = require('bcrypt')
 
@@ -10,7 +10,9 @@ class UserService {
     const candidate = await UserModel.findOne({ email })
 
     if (candidate) {
-      throw new Error(`Пользователь с почтовым адресом ${email} уже существует`)
+      throw ApiError.BadRequest(
+        `Пользователь с почтовым адресом ${email} уже существует`
+      )
     }
 
     const hashPassword = bcrypt.hashSync(password, 3)

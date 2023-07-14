@@ -11,31 +11,38 @@ class UserController {
       })
       return res.json(userData)
     } catch (error) {
-      console.log(
-        '🚀 ~ file: user-controller.js:14 ~ UserController ~ userRegistration ~ error:',
-        error.message
-      )
+      next(error)
     }
   }
   async userLogin(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
   async userLogout(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
   async activateLink(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
   async getRefreshToken(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
   async getUsers(req, res, next) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      next(error)
+    }
   }
 }
 
