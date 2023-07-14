@@ -43,10 +43,15 @@ class UserService {
     }
     const userDto = new UserDto(user)
     const tokens = tokenService.generateTokens({ ...userDto })
+    await tokenService.saveToken(userDto.id, tokens.refreshToken)
     return {
       ...tokens,
       userDto,
     }
+  }
+  async logout(refreshToken) {
+    const token = await tokenService.removeToken(refreshToken)
+    return token
   }
 }
 

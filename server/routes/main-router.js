@@ -11,7 +11,7 @@ router.post(
   userController.userRegistration
 )
 router.post('/login', userController.userLogin)
-router.post('logout', userController.userLogout)
+router.post('/logout', userController.userLogout)
 router.get('/refresh', userController.getRefreshToken)
 router.get('/users', userController.getUsers)
 
