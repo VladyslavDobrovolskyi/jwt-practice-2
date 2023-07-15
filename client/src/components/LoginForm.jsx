@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { Context } from '../main'
 
 const LoginForm = () => {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
+  const {store} = useContext(Context) 
   return (
-    <div>
+    <form>
      <input 
      onChange={e => {
       setEmail(e.target.value,
@@ -14,6 +16,7 @@ const LoginForm = () => {
      value = {email}
      type = "text"
       placeholder='Email'
+      autoComplete="current-email"
      />
      <input 
      onChange={e => setPassword(
@@ -22,11 +25,12 @@ const LoginForm = () => {
       )}
      value = {password}
      type = "password"
-      placeholder='password'
+      placeholder='Пароль'
+      autoComplete="current-password"
      />
-     <button> Логин </button>
-     <button> Регистрация </button>
-    </div>
+     <button onClick={()=> store.login(email, password)}> Логин </button>
+     <button onClick={()=> store.registration(email, password)}> Регистрация </button>
+    </form>
   )
   
 }

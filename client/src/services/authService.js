@@ -1,6 +1,6 @@
-const $api = require('../http/index')
+import $api from '../http/index'
 
-module.exports = class AuthService {
+export default class AuthService {
   static async login(email, password) {
     return $api.post('/login', { email, password })
   }

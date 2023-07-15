@@ -1,9 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
+import Store from './store/store.js'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const store = new Store();
+
+export const Context = React.createContext({
+  store
+});
+
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <Context.Provider value={{store}}>
+      <App />
+    </Context.Provider>
+  </React.StrictMode>
+);
