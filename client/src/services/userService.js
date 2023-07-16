@@ -1,6 +1,6 @@
-const $api = require('../http/index')
+import $api from '../http/index'
 
-module.exports = class UserService {
+export default class UserService {
   static async fetchUsers() {
     return $api.get('/users')
   }
