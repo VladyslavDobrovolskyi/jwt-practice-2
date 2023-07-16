@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { useContext, useState } from 'react'
 import { Context } from '../main'
 
@@ -30,4 +31,4 @@ const LoginForm = () => {
   
 }
 
-export default LoginForm
+export default observer(LoginForm)

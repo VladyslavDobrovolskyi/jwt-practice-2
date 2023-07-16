@@ -1,6 +1,7 @@
+import axios from 'axios'
 import { makeAutoObservable } from 'mobx'
 import AuthService from '../services/authService'
-
+const API_URL = `http://localhost:3000/api`
 export default class Store {
   user = {}
   isAuth = false
@@ -23,9 +24,9 @@ export default class Store {
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
       this.setAuth(true)
-      this.setUser(response.data.user)
+      this.setUser(response.data.userDto)
     } catch (error) {
-      console.log(e.response?.data?.message)
+      console.log(error.response?.data?.message)
     }
   }
   async registration(email, password) {
@@ -34,9 +35,9 @@ export default class Store {
       console.log(response)
       localStorage.setItem('token', response.data.accessToken)
       this.setAuth(true)
-      this.setUser(response.data.user)
+      this.setUser(response.data.userDto)
     } catch (error) {
-      console.log(e.response?.data?.message)
+      console.log(error.response?.data?.message)
     }
   }
   async logout(email, password) {
@@ -46,7 +47,19 @@ export default class Store {
       this.setAuth(false)
       this.setUser({})
     } catch (error) {
-      console.log(e.response?.data?.message)
+      console.log(error.response?.data?.message)
+    }
+  }
+  async checkAuth() {
+    try {
+      const response = await axios.get(`${API_URL}/refresh`, {
+        withCredentials: true,
+      })
+      localStorage.setItem('token', response.data.accessToken)
+      this.setAuth(true)
+      this.setUser(response.data.userDto)
+    } catch (error) {
+      console.log(error.response?.data?.message)
     }
   }
 }
