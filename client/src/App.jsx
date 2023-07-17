@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { useContext, useEffect, useState } from 'react'
 import LoginForm from './components/LoginForm'
+import './index.css'
 import { Context } from './main'
 import UserService from './services/userService.js'
 function App() {
@@ -29,21 +30,25 @@ function App() {
       return (
         <>
       <LoginForm/>
-      <button onClick={getUsers}> Получить пользователей </button>
+      <button onClick={getUsers} className='btn-users' > Получить пользователей </button>
         </>
     )}
   return (
 
-   <div>
+   <div></div>
     <h1>{store.isAuth ? `Пользователь авторизован ${store.user.email}` : `Авторизуйтесь для получения данных`}</h1>
-    <button onClick={() => store.logout()}> Выйти </button>
     <div>
-    <button onClick={getUsers}> Получить пользователей </button>
+    <button onClick={() => store.logout()} className='btn-logout'> Выйти </button>
+    <button onClick={getUsers} className='btn-users'> Получить пользователей </button>
     </div>
+    <div className='users-div'>
+      <ul>
     {users ? users.map(user => 
-      <div key = {user.email}> {user.email} </div>
-      ): null}
+        <li key = {user.email}> {user.email} </li>
+        ): null}
+        </ul>
    </div>
+      </div>
     )
 }
 

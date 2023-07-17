@@ -9,8 +9,8 @@ const LoginForm = () => {
   const {store} = useContext(Context) 
 
   return (
-    <div>
-     <input  
+    <div className='form-login'>
+     <input className='in-email' 
      onChange={e => {
       setEmail(e.target.value)
     }}
@@ -18,14 +18,16 @@ const LoginForm = () => {
      type = "text"
       placeholder='Email'
      />
-     <input 
+     <input className='in-password'
      onChange={e => setPassword(e.target.value)}
      value = {password}
      type = "password"
       placeholder='Пароль'
      />
-     <button onClick={()=> store.login(email, password)}> Логин </button>
-     <button onClick={()=> store.registration(email, password)}> Регистрация </button>
+     <div>
+     <button className = "btn-login" onClick={()=> store.login(email, password)}> Логин </button>
+     <button className = "btn-registration" onClick={()=> store.registration(email, password)}> Регистрация </button>
+     </div>
     </div>
   )
   
