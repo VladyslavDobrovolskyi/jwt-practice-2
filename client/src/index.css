@@ -1,0 +1,58 @@
+/* Login-form */
+.form-login{
+  display: flex;
+  justify-content: center;
+
+}
+.btn-users{
+  margin-top: 10px;
+  margin-left: 40%;
+  font-size: large;
+}
+
+
+.btn-login{
+ width: 150px;
+ font-size: large;
+}
+
+.btn-registration{
+  width: 150px;
+  display: block;
+  font-size: large;
+}
+.btn-logout{
+  width: 340px;
+  font-size: large;
+  margin-top: 10px;
+  margin-left: 40%;
+  font-size: large;
+}
+
+h1{
+  margin-top: 10px;
+  margin-left: 30%;
+}
+
+.users-div{
+  border: 5px solid grey;
+  width: 330px;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 30%;
+}
+/* 
+ul{
+ font-size: x-large;
+ list-style: none;
+ width: 340px;
+}
+li {
+}
+.in-email{
+  left: 100px;
+}
+
+.in-password{
+  left: 100px;
+} */
