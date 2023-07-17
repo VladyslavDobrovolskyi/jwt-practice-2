@@ -35,7 +35,7 @@ function App() {
     )}
   return (
 
-   <div></div>
+   <div>
     <h1>{store.isAuth ? `Пользователь авторизован ${store.user.email}` : `Авторизуйтесь для получения данных`}</h1>
     <div>
     <button onClick={() => store.logout()} className='btn-logout'> Выйти </button>
